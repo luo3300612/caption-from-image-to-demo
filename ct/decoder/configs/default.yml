@@ -1,0 +1,31 @@
+# data
+num_workers: 4
+
+# ct
+model: standard
+embedding_dim: 512
+hidden_dim: 512
+
+# learning
+lr: 0.0004
+lr_decay: 0.8
+lr_decay_every: 3
+batch_size: 10
+n_epoch: 50
+max_sent_len_0: 7
+max_sent_len_1: 30
+max_sent_len_2: 80
+max_sent_len_3: 40
+max_sent_len_4: 50
+max_sent_len_5: 20
+max_sent_len_6: 50
+max_sent_len_7: 30
+
+# checkpoint
+exp_name: anonymous_run
+savedir: output
+
+# sample
+schedule_sample_method: multinomial
+schedule_sample_prob: 0
+schedule_sample_ratio: 0.008

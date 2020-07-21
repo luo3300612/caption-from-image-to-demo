@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block page_content %}
+<div class="page-header">
+    <h1>冠心病报告生成</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <span style="font-size: 18px">冠心病报告生成系统是一个辅助医疗系统，可以根据CT图片自动生成冠心病诊断报告</span>
+        </div>
+    </div>
+    <div class="row">
+    </div>
+</div>
+
+<div class="col-md-offset-3">
+    <img src="{{ url_for("static",filename="imgs/index2.png") }}" width="600">
+</div>
+
+
+<br>
+<br>
+<div class="row">
+    <div class="col-md-12">
+        <span style="font-size: 18px">请上传CT图片的zip压缩文件</span>
+    </div>
+</div>
+<br>
+<br>
+
+<!--<div class="row">-->
+<!--    <div class="col-md-offset-4">-->
+<!--        <form class="form-inline center-block" method="POST" enctype="multipart/form-data">-->
+<!--            {{ form.hidden_tag() }}-->
+<!--            <div class="input-group">-->
+<!--                <label id="browsebutton" class="btn btn-default input-group-addon" for="my-file-selector"-->
+<!--                       style="background-color:white">-->
+<!--                    <input id="f_upload" name="file" type="file" style="display:none;">-->
+<!--                    浏览...-->
+<!--                </label>-->
+<!--                <input type="text" class="form-control" readonly="" placeholder="上传文件...">-->
+<!--            </div>-->
+<!--            {{ form.submit(class="btn btn-default") }}-->
+<!--        </form>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="row">
+    <div class="col-md-offset-4">
+    <form class="form-inline center-block" method="POST" enctype="multipart/form-data">
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        {{ form.hidden_tag() }}
+            <div class="input-group">
+                <label class="input-group-btn">
+                    <input type="button" id="i-check" value="浏览" class="btn btn-default"
+                           onclick="$('#i-file').click();">
+                </label>
+                <input id='location' class="form-control" onclick="$('#i-file').click();">
+            </div>
+        <input type="file" name="file" id='i-file' accept=".zip"
+               onchange="$('#location').val($('#i-file').val());" style="display: none">
+        {{ form.submit(class="btn btn-default") }}
+    </form>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}

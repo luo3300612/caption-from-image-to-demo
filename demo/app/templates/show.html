@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block page_content %}
+    <div class="page-header">
+        <h1>冠心病报告生成</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h2>CT样例</h2>
+        </div>
+        <div class="row">
+            &nbsp;
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1"><img class="img-rounded profile-thumbnail"
+                                                       src="{{ url_for('static',filename=img_paths[0]) }}"
+                                                       alt="not found" height="175" width="175"></div>
+            <div class="col-md-2"><img class="img-rounded profile-thumbnail"
+                                       src="{{ url_for('static',filename=img_paths[1]) }}" alt="not found"
+                                       height="175" width="175"></div>
+            <div class="col-md-2"><img class="img-rounded profile-thumbnail"
+                                       src="{{ url_for('static',filename=img_paths[2]) }}" alt="not found"
+                                       height="175" width="175"></div>
+            <div class="col-md-2"><img class="img-rounded profile-thumbnail"
+                                       src="{{ url_for('static',filename=img_paths[3]) }}" alt="not found"
+                                       height="175" width="175"></div>
+            <div class="col-md-2"><img class="img-rounded profile-thumbnail"
+                                       src="{{ url_for('static',filename=img_paths[4]) }}" alt="not found"
+                                       height="175" width="175"></div>
+        </div>
+
+        {% for i in range(10) %}
+            <div class="row">
+                &nbsp;
+            </div>
+        {% endfor %}
+
+        <div class="row">
+            <h2>医疗报告</h2>
+        </div>
+        <br>
+        <div class="row">
+        <h4 style="display: inline">诊断描述:</h4>
+        </div>
+        <br>
+        {% for key,value in output.items() %}
+            {% if key != '7' %}
+                <div class="row">
+<!--                    <h4 style="display: inline">{{ key.capitalize() }}:</h4>&nbsp;-->
+                    {{ value.capitalize() }}
+                </div>
+                <br>
+            {% endif %}
+        {% endfor %}
+        <div class="row">
+            <h4 style="display: inline">诊断意见:</h4>&nbsp;{{ output['7'].capitalize() }}
+        </div>
+        <br>
+    </div>
+{% endblock %}
